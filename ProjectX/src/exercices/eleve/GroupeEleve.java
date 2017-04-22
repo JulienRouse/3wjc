@@ -15,7 +15,7 @@ public class GroupeEleve {
 	/**
 	 * Empty/private constructor
 	 */
-	private GroupeEleve(){
+	public GroupeEleve(){
 	}
 	
 	public int nombre(){
@@ -30,6 +30,12 @@ public class GroupeEleve {
 		this.listEleve.add(eleve);
 	}
 	
+	/**
+	 * Cherche et return l'eleve si il est dans la liste, null sinon.
+	 * 
+	 * @param nom Le nom de l'eleve à chercher
+	 * @return un Eleve si le nom est dans la liste ou null sinon.
+	 */
 	public Eleve chercher(String nom){
 		 for(Eleve eleve : this.listEleve)
 			 if (eleve.getNom().equals(nom))
@@ -37,6 +43,9 @@ public class GroupeEleve {
 		 return null;
 	}
 	
+	/**
+	 * 
+	 */
 	public void lister(){
 		for(Eleve eleve : this.listEleve)
 			System.out.println(eleve.toString());

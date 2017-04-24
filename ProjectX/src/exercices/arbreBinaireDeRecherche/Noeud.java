@@ -39,6 +39,9 @@ public class Noeud {
 		this.nbOcc=nbOcc;
 	}
 
+	public String toString(){
+		return "{"+this.mot+", "+this.nbOcc+"}";
+	}
 
 	public String getMot() {
 		return mot;
@@ -73,5 +76,9 @@ public class Noeud {
 
 	public void setDroit(Noeud droit) {
 		this.droit = droit;
+	}
+
+	public void incrementNbOcc() {
+		this.nbOcc++;
 	}
 }

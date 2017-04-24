@@ -59,16 +59,13 @@ public class Noeud {
 		this.nbOcc = nbOcc;
 	}
 
-
 	public Noeud getGauche() {
 		return gauche;
 	}
 
-
 	public void setGauche(Noeud gauche) {
 		this.gauche = gauche;
 	}
-
 
 	public Noeud getDroit() {
 		return droit;

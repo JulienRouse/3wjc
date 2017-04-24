@@ -96,13 +96,13 @@ public class ABR {
 		if(racine!=null){
 			//on applique f sur les enfants
 			if(racine.getGauche()!=null)
-				f.func(level, racine.getGauche());
+				f.func(level+1, racine.getGauche());
 			if(racine.getDroit()!=null)
-				f.func(level, racine.getDroit());
+				f.func(level+1, racine.getDroit());
 			
 			//on appel recursivement sur les enfants
-			BFT(level, f, racine.getGauche());
-			BFT(level, f, racine.getDroit());
+			BFT(level+1, f, racine.getGauche());
+			BFT(level+1, f, racine.getDroit());
 		}
 	}
 	

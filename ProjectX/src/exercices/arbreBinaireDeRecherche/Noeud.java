@@ -40,7 +40,7 @@ public class Noeud {
 	}
 
 	public String toString(){
-		return "{"+this.mot+", "+this.nbOcc+"}";
+		return "{"+this.mot+","+this.nbOcc+"}";
 	}
 
 	public String getMot() {

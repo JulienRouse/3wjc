@@ -13,7 +13,7 @@ import java.util.*;
 public class Eleve {
 	private String nom;
 	private List<Integer> listNotes;
-	private double moyenne; 
+	private double moyenne;
 	
 	/**
 	 * Constructeur d'un eleve avec seulement son nom

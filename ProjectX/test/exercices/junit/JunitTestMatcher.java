@@ -5,7 +5,7 @@ import static org.hamcrest.CoreMatchers.*;
 
 import org.junit.Test;
 
-public class JunitTest {
+public class JunitTestMatcher {
 
 	//core
 	@Test

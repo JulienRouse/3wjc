@@ -64,11 +64,11 @@ public class ABRTest {
 	
 	//DFT pre-order
 	@Test
-	public void testDFTPreorder(){
+	public void testDFTPreOrder(){
 		String[] tableauMots = {"c", "b", "d","a", "bb"};
 		tree.construire(tableauMots);
 		StringBuilder sb= new StringBuilder();
-		tree.DFTPreorder((i,n)->{
+		tree.DFTPreOrder((i,n)->{
 			for(int j=0;j<i;j++){
 				sb.append("-");}
 			sb.append(n);

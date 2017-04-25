@@ -40,7 +40,6 @@ public class Noeud {
 		this(mot);
 		this.nbOcc=nbOcc;
 	}
-
 	
 	//util
 	public String toString(){

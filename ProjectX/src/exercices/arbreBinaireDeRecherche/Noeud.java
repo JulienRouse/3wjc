@@ -1,5 +1,7 @@
 package exercices.arbreBinaireDeRecherche;
 
+import java.util.stream.Stream;
+
 //https://www.infres.telecom-paristech.fr/people/hudry/coursJava/exercices/abr.html
 
 /**
@@ -39,6 +41,8 @@ public class Noeud {
 		this.nbOcc=nbOcc;
 	}
 
+	
+	//util
 	public String toString(){
 		return "{"+this.mot+","+this.nbOcc+"}";
 	}

@@ -106,4 +106,23 @@ public class ABRTest {
 			});
 		assertThat(sb.toString(), is("--{a,1}\n--{bb,1}\n-{b,1}\n-{d,1}\n{c,1}\n"));
 	}
+
+	
+	//other
+	@Test
+	public void testCapitalizeEvenDepthNode(){
+		String[] tableauMots = {"c", "b", "d","a", "bb"};
+		tree.construire(tableauMots);
+		tree.capitalizeEvenDepthNodes();
+		assertThat(tree.toStringBFT(), is("{C,1}\n-{b,1}\n-{d,1}\n--{A,1}\n--{BB,1}\n"));
+	}
+	
+	@Test
+	public void testSumAllWordOccurences(){
+		String[] tableauMots = {"c", "b", "d","b", "bb"};
+		tree.construire(tableauMots);
+		assertThat(5, is(tree.sumAllWordOccurences()));	
+	}
+	
+	
 }

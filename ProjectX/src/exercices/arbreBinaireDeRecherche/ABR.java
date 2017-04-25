@@ -1,6 +1,9 @@
 package exercices.arbreBinaireDeRecherche;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 /**
  * Classe ABR
@@ -223,6 +226,51 @@ public class ABR {
 			DFTPostOrder(level+1, f, racine.getDroit());	
 			f.func(level, racine);	
 		}
+	}
+	
+	
+	//use of traversal
+	
+	/**
+	 * Print the tree with BFT traversal.
+	 * Add N dash before node value, N being the depth of the node 
+	 * @return
+	 */
+	public String toStringBFT(){
+		StringBuilder sb = new StringBuilder();
+		BFT((level, node)->{
+			for(int j=0;j<level;j++){
+				sb.append("-");}
+			sb.append(node);
+			sb.append("\n");
+		});
+		return sb.toString();
+	}
+	
+	/**
+	 * Capitalize string contained in node at even depth.
+	 * (use BFT here to traverse the tree but not really an important detail).
+	 * 
+	 * WARNING: Destructive method, may change values in the tree.
+	 */
+	public void capitalizeEvenDepthNodes(){
+		BFT((level,node)->{
+			if(level % 2 == 0)
+				node.setMot(node.getMot().toUpperCase());
+		});
+	}
+	
+	/**
+	 * Sum all words occurrence in the tree.
+	 * 
+	 * @return the sum of all the occurrences of words in the tree 
+	 */
+	public int sumAllWordOccurences(){
+		List<Integer> listOcc = new ArrayList<Integer>();
+		BFT((level, node)->{
+			listOcc.add(node.getNbOcc()); 
+		});
+		return listOcc.stream().reduce(0,Integer::sum);
 	}
 	
 }

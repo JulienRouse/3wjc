@@ -129,56 +129,60 @@ public class ABR {
 	}
 
 	/**
-	 * Depth First Traversal of the tree with preorder.
+	 * Depth First Traversal of the tree with Preorder.
 	 * Takes a lambda function as parameter to apply to every node of the tree.
 	 * Example of use:
 	 * 
 	 * <tt>
-	 * tree.DFTPreorder((i,n)->{
+	 * tree.DFTPreOrder((i,n)->{
 			for(int j=0;j<i;j++){
 				sb.append("-");}
 			sb.append(n);
 			sb.append("\n");
 			});
 		</tt>
-	 * This will print the tree in DFT Pre-order with <tt>i</tt> dash before every element, 
+	 * This will print the tree in DFT Preorder with <tt>i</tt> dash before every element, 
 	 * <tt>i</tt> being the depth of the node in the tree. (The root is depth 0).
 	 * @param f the lambda function to be applied to every node to the tree.
 	 *        f takes an int and a Noeud as parameter.
 	 */
-	public void DFTPreorder(IInterface f) {
+	public void DFTPreOrder(IInterface f) {
 		if(!estVide()){
-			f.func(0, this.racine);
-			DFTPreorder(0, f, this.racine);
+			DFTPreOrder(0, f, this.racine);
 		}
-		
 	}
 
-	private void DFTPreorder(int level, IInterface f, Noeud racine) {
+	private void DFTPreOrder(int level, IInterface f, Noeud racine) {
 		if(racine!=null){
-			//on applique f d'abord à gauche
-			if(racine.getGauche()!=null)
-				f.func(level+1, racine.getGauche());
-			//puis on continue la traversé en descendant dns l'arbre
-			DFTPreorder(level+1, f, racine.getGauche());
-			//puis on applique f a droite
-			if(racine.getDroit()!=null)
-				f.func(level+1, racine.getDroit());
-			//et enfin explore le sous arbre droit
-			DFTPreorder(level+1, f, racine.getDroit());	
+			f.func(level, racine);
+			DFTPreOrder(level+1, f, racine.getGauche());
+			DFTPreOrder(level+1, f, racine.getDroit());	
 		}
 		
 	}
 
 	/**
+	 * Depth First Traversal of the tree with Inorder.
+	 * Takes a lambda function as parameter to apply to every node of the tree.
+	 * Example of use:
 	 * 
-	 * @param f
+	 * <tt>
+	 * tree.DFTInOrder((i,n)->{
+			for(int j=0;j<i;j++){
+				sb.append("-");}
+			sb.append(n);
+			sb.append("\n");
+			});
+		</tt>
+	 * This will print the tree in DFT Inorder with <tt>i</tt> dash before every element, 
+	 * <tt>i</tt> being the depth of the node in the tree. (The root is depth 0).
+	 * @param f the lambda function to be applied to every node to the tree.
+	 *        f takes an int and a Noeud as parameter.
 	 */
 	public void DFTInOrder(IInterface f) {
 		if(!estVide()){
 			DFTInOrder(0, f, this.racine);
 		}
-		
 	}
 
 	private void DFTInOrder(int level, IInterface f, Noeud racine) {
@@ -190,14 +194,27 @@ public class ABR {
 	}
 	
 	/**
+	 * Depth First Traversal of the tree with Postorder.
+	 * Takes a lambda function as parameter to apply to every node of the tree.
+	 * Example of use:
 	 * 
-	 * @param f
+	 * <tt>
+	 * tree.DFTPostOrder((i,n)->{
+			for(int j=0;j<i;j++){
+				sb.append("-");}
+			sb.append(n);
+			sb.append("\n");
+			});
+		</tt>
+	 * This will print the tree in DFT Postorder with <tt>i</tt> dash before every element, 
+	 * <tt>i</tt> being the depth of the node in the tree. (The root is depth 0).
+	 * @param f the lambda function to be applied to every node to the tree.
+	 *        f takes an int and a Noeud as parameter.
 	 */
 	public void DFTPostOrder(IInterface f) {
 		if(!estVide()){
 			DFTPostOrder(0, f, this.racine);
 		}
-		
 	}
 
 	private void DFTPostOrder(int level, IInterface f, Noeud racine) {

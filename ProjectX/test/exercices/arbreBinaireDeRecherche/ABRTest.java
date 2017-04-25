@@ -18,10 +18,16 @@ public class ABRTest {
 		tree = new ABR();
 	}
 	
-	@Ignore
+	//construire
 	@Test
-	public void testConstruire() {
-		
+	public void testConstruireArrayString() {
+		String[] tabMots = { "dd", "bb", "aa", "zz", "dd", "bb", "zzz"};
+		tree.construire(tabMots);
+		StringBuilder sb = new StringBuilder();
+		tree.BFT((i,n)->{
+			sb.append(n);
+		});
+		assertThat(sb.toString(), is("{dd,2}{bb,2}{zz,1}{aa,1}{zzz,1}"));
 	}
 
 	//inserer
@@ -40,9 +46,10 @@ public class ABRTest {
 		assertThat(tree.getRacine().getDroit().getMot(), is("b"));
 		
 	}
-
+	
+	//BFT
 	@Test
-	public void testBFTWithFourElements(){
+	public void testBFT(){
 		String[] tableauMots = {"c", "b", "d","a"};
 		tree.construire(tableauMots);
 		StringBuilder sb= new StringBuilder();
@@ -55,4 +62,48 @@ public class ABRTest {
 		assertThat(sb.toString(), is("{c,1}\n-{b,1}\n-{d,1}\n--{a,1}\n"));
 	}
 	
+	//DFT pre-order
+	@Test
+	public void testDFTPreorder(){
+		String[] tableauMots = {"c", "b", "d","a", "bb"};
+		tree.construire(tableauMots);
+		StringBuilder sb= new StringBuilder();
+		tree.DFTPreorder((i,n)->{
+			for(int j=0;j<i;j++){
+				sb.append("-");}
+			sb.append(n);
+			sb.append("\n");
+			});
+		assertThat(sb.toString(), is("{c,1}\n-{b,1}\n--{a,1}\n--{bb,1}\n-{d,1}\n"));
+	}
+	
+	//DFT in-order
+	@Test
+	public void testWithDFTInOrder(){
+		String[] tableauMots = {"c", "b", "d","a", "bb"};
+		tree.construire(tableauMots);
+		StringBuilder sb= new StringBuilder();
+		tree.DFTInOrder((i,n)->{
+			for(int j=0;j<i;j++){
+				sb.append("-");}
+			sb.append(n);
+			sb.append("\n");
+			});
+		assertThat(sb.toString(), is("--{a,1}\n-{b,1}\n--{bb,1}\n{c,1}\n-{d,1}\n"));
+	}
+	
+	//DFT post-order
+	@Test
+	public void testWithDFTPostOrder(){
+		String[] tableauMots = {"c", "b", "d","a", "bb"};
+		tree.construire(tableauMots);
+		StringBuilder sb= new StringBuilder();
+		tree.DFTPostOrder((i,n)->{
+			for(int j=0;j<i;j++){
+				sb.append("-");}
+			sb.append(n);
+			sb.append("\n");
+			});
+		assertThat(sb.toString(), is("--{a,1}\n--{bb,1}\n-{b,1}\n-{d,1}\n{c,1}\n"));
+	}
 }

@@ -3,7 +3,7 @@ package exercices.arbreBinaireDeRecherche;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Stream;
+
 
 /**
  * Classe ABR

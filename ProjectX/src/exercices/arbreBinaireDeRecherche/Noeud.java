@@ -1,6 +1,6 @@
 package exercices.arbreBinaireDeRecherche;
 
-import java.util.stream.Stream;
+
 
 //https://www.infres.telecom-paristech.fr/people/hudry/coursJava/exercices/abr.html
 

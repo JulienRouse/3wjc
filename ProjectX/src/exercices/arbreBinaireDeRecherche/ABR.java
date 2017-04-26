@@ -234,7 +234,7 @@ public class ABR {
 	/**
 	 * Print the tree with BFT traversal.
 	 * Add N dash before node value, N being the depth of the node 
-	 * @return
+	 * @return a string representing the tree
 	 */
 	public String toStringBFT(){
 		StringBuilder sb = new StringBuilder();
@@ -260,6 +260,8 @@ public class ABR {
 		});
 	}
 	
+	
+	//could be implemented better with stream? maybe
 	/**
 	 * Sum all words occurrence in the tree.
 	 * 

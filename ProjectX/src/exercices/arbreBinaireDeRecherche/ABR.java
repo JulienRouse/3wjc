@@ -117,17 +117,17 @@ public class ABR {
 		}
 	}
 
-	private void BFT(int level, IInterface f, Noeud racine) {
+	private void BFT(int depth, IInterface f, Noeud racine) {
 		if(racine!=null){
 			//on applique f sur les enfants
 			if(racine.getGauche()!=null)
-				f.func(level+1, racine.getGauche());
+				f.func(depth+1, racine.getGauche());
 			if(racine.getDroit()!=null)
-				f.func(level+1, racine.getDroit());
+				f.func(depth+1, racine.getDroit());
 			
 			//on appel recursivement sur les enfants
-			BFT(level+1, f, racine.getGauche());
-			BFT(level+1, f, racine.getDroit());
+			BFT(depth+1, f, racine.getGauche());
+			BFT(depth+1, f, racine.getDroit());
 		}
 	}
 
@@ -155,11 +155,11 @@ public class ABR {
 		}
 	}
 
-	private void DFTPreOrder(int level, IInterface f, Noeud racine) {
+	private void DFTPreOrder(int depth, IInterface f, Noeud racine) {
 		if(racine!=null){
-			f.func(level, racine);
-			DFTPreOrder(level+1, f, racine.getGauche());
-			DFTPreOrder(level+1, f, racine.getDroit());	
+			f.func(depth, racine);
+			DFTPreOrder(depth+1, f, racine.getGauche());
+			DFTPreOrder(depth+1, f, racine.getDroit());	
 		}
 		
 	}
@@ -188,11 +188,11 @@ public class ABR {
 		}
 	}
 
-	private void DFTInOrder(int level, IInterface f, Noeud racine) {
+	private void DFTInOrder(int depth, IInterface f, Noeud racine) {
 		if(racine!=null){
-			DFTInOrder(level+1, f, racine.getGauche());
-			f.func(level, racine);	
-			DFTInOrder(level+1, f, racine.getDroit());	
+			DFTInOrder(depth+1, f, racine.getGauche());
+			f.func(depth, racine);	
+			DFTInOrder(depth+1, f, racine.getDroit());	
 		}
 	}
 	
@@ -220,11 +220,11 @@ public class ABR {
 		}
 	}
 
-	private void DFTPostOrder(int level, IInterface f, Noeud racine) {
+	private void DFTPostOrder(int depth, IInterface f, Noeud racine) {
 		if(racine!=null){
-			DFTPostOrder(level+1, f, racine.getGauche());
-			DFTPostOrder(level+1, f, racine.getDroit());	
-			f.func(level, racine);	
+			DFTPostOrder(depth+1, f, racine.getGauche());
+			DFTPostOrder(depth+1, f, racine.getDroit());	
+			f.func(depth, racine);	
 		}
 	}
 	
@@ -238,8 +238,8 @@ public class ABR {
 	 */
 	public String toStringBFT(){
 		StringBuilder sb = new StringBuilder();
-		BFT((level, node)->{
-			for(int j=0;j<level;j++){
+		BFT((depth, node)->{
+			for(int j=0;j<depth;j++){
 				sb.append("-");}
 			sb.append(node);
 			sb.append("\n");
@@ -254,8 +254,8 @@ public class ABR {
 	 * WARNING: Destructive method, may change values in the tree.
 	 */
 	public void capitalizeEvenDepthNodes(){
-		BFT((level,node)->{
-			if(level % 2 == 0)
+		BFT((depth,node)->{
+			if(depth % 2 == 0)
 				node.setMot(node.getMot().toUpperCase());
 		});
 	}
@@ -267,7 +267,7 @@ public class ABR {
 	 */
 	public int sumAllWordOccurences(){
 		List<Integer> listOcc = new ArrayList<Integer>();
-		BFT((level, node)->{
+		BFT((depth, node)->{
 			listOcc.add(node.getNbOcc()); 
 		});
 		return listOcc.stream().reduce(0,Integer::sum);
